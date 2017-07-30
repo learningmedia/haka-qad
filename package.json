@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:learningmedia/haka-qad.git",
   "author": "The LerningMedia Team",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server app -o"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
 }

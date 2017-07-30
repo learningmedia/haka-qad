@@ -1,0 +1,9 @@
+{
+  "video": "Gb-Dur.mp4",
+  "markers": [{
+    "timecode": "10",
+    "question": "Welche Farbe hat das Auto?",
+    "answers": ["Grün", "Gelb", "Rot"],
+    "duration": "10"
+  }]
+}

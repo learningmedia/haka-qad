@@ -1,0 +1,29 @@
+// HAKA specific classes:
+// ------------------------------------
+
+.haka-root {
+  position: relative;
+}
+
+.haka-video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.haka-marker {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  display: none;
+  padding: 10px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.haka-marker-active {
+  display: block;
+}
