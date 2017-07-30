@@ -1,0 +1,9 @@
+{
+  "name": "haka-qad",
+  "version": "0.0.0",
+  "description": "Quick and dirty version of haka-2020",
+  "main": "index.js",
+  "repository": "git@github.com:learningmedia/haka-qad.git",
+  "author": "The LerningMedia Team",
+  "license": "MIT"
+}
