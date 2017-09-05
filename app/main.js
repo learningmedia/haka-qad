@@ -1,3 +1,7 @@
+const handlers = {
+  showQuestionLayer
+};
+
 function htmlEncode(text) {
   const div = document.createElement('div');
   div.textContent = text;
@@ -8,59 +12,30 @@ function resolveUrl(rootUrl, url) {
   return `${rootUrl}${url}`;
 }
 
-function createAnswerHtml(answer) {
-  return `
-    <button class="haka-answer">
-      ${htmlEncode(answer)}
-    </button>
-  `
-}
-
-function createMarkerHtml(marker) {
-  return `
-    <div class="haka-marker" data-timecode="${marker.timecode}" data-duration="${marker.duration}">
-      <p class="haka-question">${htmlEncode(marker.question)}</p>
-      ${marker.answers.map(answer => createAnswerHtml(answer)).join('')}
-    </div>
-  `
-}
-
 function createHtml(config, rootUrl) {
   return `
     <div class="haka-root">
       <video class="haka-video" src="${resolveUrl(rootUrl, config.video)}" controls></video>
-      ${config.markers.map(marker => createMarkerHtml(marker)).join('')}
+      <div class="haka-sidebar"></div>
     </div>
   `;
 }
 
 function renderProject(container, config, rootUrl) {
-  const markers = [];
-  const $container = $(container);
-  $container.html(createHtml(config, rootUrl));
-  $container.find('.haka-marker').each((index, marker) => {
-    const $marker = $(marker);
-    const timecode = Number($marker.attr('data-timecode'));
-    const duration = Number($marker.attr('data-duration'));
-    markers.push({
-      timecode: timecode,
-      duration: duration,
-      $element: $marker
-    });
-  });
-  $container.find('.haka-video').each((index, video) => {
-    video.addEventListener('timeupdate', () => {
-      const index = markers.findIndex(marker => video.currentTime >= marker.timecode);
-      if (index !== -1) {
-        const currentMarker = markers[index];
-        markers.splice(index, 1);
-        currentMarker.$element.addClass('haka-marker-active');
-        setTimeout(() => currentMarker.$element.removeClass('haka-marker-active'), currentMarker.duration * 1000);
-      }
-    }, false);
-    video.play();
-  });
+  const markers = config.markers;
+  container.innerHTML = createHtml(config, rootUrl);
+  const video = container.querySelector('.haka-video');
 
+  video.addEventListener('timeupdate', () => {
+    const index = markers.findIndex(marker => video.currentTime >= marker.timecode);
+    if (index !== -1) {
+      const currentMarker = markers[index];
+      markers.splice(index, 1);
+      handlers[currentMarker.handler](container, currentMarker.params);
+    }
+  }, false);
+
+  video.play();
 }
 
 function startHaka(container, configUrl, rootUrl) {
@@ -72,4 +47,14 @@ function startHaka(container, configUrl, rootUrl) {
   .catch(error => alert(error));
 }
 
-$(() => startHaka('#main', 'example/example.json', 'example/'));
+function showQuestionLayer(container, params) {
+  const markerHtml = `
+    <div>
+      <p>${htmlEncode(params.question)}</p>
+      ${params.answers.map(answer => `<button>${htmlEncode(answer.value)}</button>`).join('')}
+    </div>
+  `;
+  container.querySelector('.haka-sidebar').insertAdjacentHTML('beforeend', markerHtml);
+}
+
+$(() => startHaka(document.getElementById('main'), 'example/example.json', 'example/'));

@@ -1,9 +1,21 @@
 {
   "video": "Gb-Dur.mp4",
   "markers": [{
+    "id": "marker-1",
     "timecode": "10",
-    "question": "Welche Farbe hat das Auto?",
-    "answers": ["Grün", "Gelb", "Rot"],
-    "duration": "10"
+    "handler": "showQuestionLayer",
+    "params": {
+      "question": "Welche Farbe hat das Auto?",
+      "answers": [{
+        "value": "Grün",
+        "text": "Is falsch"
+      }, {
+        "value": "Gelb",
+        "text": "Is richtig"
+      }, {
+        "value": "Rot",
+        "text": "Is falsch"
+      }]
+    }
   }]
 }
