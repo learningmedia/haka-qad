@@ -17,5 +17,22 @@
         "text": "Is falsch"
       }]
     }
+  }, {
+    "id": "marker-2",
+    "timecode": "20",
+    "handler": "showQuestionLayer",
+    "params": {
+      "question": "Welche Farbe hat das T-Shirt?",
+      "answers": [{
+        "value": "Grün",
+        "text": "Is falsch"
+      }, {
+        "value": "Gelb",
+        "text": "Is richtig"
+      }, {
+        "value": "Rot",
+        "text": "Is falsch"
+      }]
+    }
   }]
 }

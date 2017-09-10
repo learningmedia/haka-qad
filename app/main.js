@@ -47,11 +47,22 @@ function startHaka(container, configUrl, rootUrl) {
   .catch(error => alert(error));
 }
 
+  window.document.body.addEventListener('click', event => {
+
+  if (event.target.getAttribute('data-role') === 'answer') {
+    const textElement = event.target.parentNode.querySelector('[data-role="text"]');
+    textElement.textContent = event.target.getAttribute('data-text');
+    textElement.classList.remove('haka-inactive');
+  }
+
+});
+
 function showQuestionLayer(container, params) {
   const markerHtml = `
     <div>
       <p>${htmlEncode(params.question)}</p>
-      ${params.answers.map(answer => `<button>${htmlEncode(answer.value)}</button>`).join('')}
+      ${params.answers.map(answer => `<button data-role="answer" data-text="${htmlEncode(answer.text)}">${htmlEncode(answer.value)}</button>`).join('')}
+      <p class="haka-inactive" data-role="text"></p>
     </div>
   `;
   container.querySelector('.haka-sidebar').insertAdjacentHTML('beforeend', markerHtml);
