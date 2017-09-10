@@ -1,3 +1,5 @@
+import HelloWorld from './hello-world';
+
 const handlers = {
   showQuestionLayer
 };
@@ -47,7 +49,7 @@ function startHaka(container, configUrl, rootUrl) {
   .catch(error => alert(error));
 }
 
-  window.document.body.addEventListener('click', event => {
+  document.body.addEventListener('click', event => {
 
   if (event.target.getAttribute('data-role') === 'answer') {
     const textElement = event.target.parentNode.querySelector('[data-role="text"]');
@@ -69,3 +71,8 @@ function showQuestionLayer(container, params) {
 }
 
 $(() => startHaka(document.getElementById('main'), 'example/example.json', 'example/'));
+
+const app = new HelloWorld({
+  target: document.getElementById('test'),
+  data: { name: 'world' }
+});

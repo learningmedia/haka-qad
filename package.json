@@ -7,9 +7,17 @@
   "author": "The LerningMedia Team",
   "license": "MIT",
   "scripts": {
-    "start": "http-server app -o"
+    "start": "webpack-dev-server --open",
+    "prebuild": "mkdir -p ./public && cp ./app/index.html ./public/index.html && cp ./app/main.css ./public/main.css && cp -r ./app/example/ ./public",
+    "build": "webpack"
   },
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "svelte": "^1.39.0",
+    "svelte-loader": "^2.1.0",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1"
   }
 }
