@@ -1,14 +1,6 @@
 import HakaRoot from './haka-root';
 
-function renderProject(container, config, rootUrl) {
-
-  const hakaApp = new HakaRoot({
-    target: document.getElementById('test'),
-    data: { config, rootUrl }
-  });
-
-  hakaApp.start();
-}
+$(() => startHaka(document.getElementById('main'), 'example/example.json', 'example/'));
 
 function startHaka(container, configUrl, rootUrl) {
   $.ajax({
@@ -19,4 +11,11 @@ function startHaka(container, configUrl, rootUrl) {
   .catch(error => alert(error));
 }
 
-$(() => startHaka(document.getElementById('main'), 'example/example.json', 'example/'));
+function renderProject(container, config, rootUrl) {
+  const hakaApp = new HakaRoot({
+    target: document.getElementById('test'),
+    data: { config, rootUrl }
+  });
+
+  hakaApp.start();
+}

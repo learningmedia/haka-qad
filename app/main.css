@@ -2,6 +2,7 @@
 
 .haka-root {
   display: flex;
+  width: 800px;
 }
 
 .haka-video {
@@ -11,4 +12,29 @@
 
 .haka-sidebar {
   flex: 1 0 0%;
+}
+
+.haka-question-layer {
+  position: relative;
+}
+
+.haka-question-layer-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  color: white;
+  background-color: maroon;
+  padding: 4px;
+}
+
+.haka-question-layer-content {
+}
+
+.haka-question-layer-content-expanded {
+  display: block;
+}
+
+.haka-question-layer-content-collapsed {
+  display: none;
 }

@@ -1,0 +1,15 @@
+<div class="haka-sidebar">
+  {{#each layers as layer}}
+    <HakaQuestionLayer layer="{{layer}}" />
+  {{/each}}
+</div>
+
+<script>
+  import HakaQuestionLayer from './haka-question-layer';
+
+  export default {
+    components: {
+      HakaQuestionLayer
+    }
+  };
+</script>

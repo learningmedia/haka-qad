@@ -1,27 +1,15 @@
 <div class="haka-root">
   <video ref:video on:timeupdate="onTimeUpdate()" class="haka-video" src="{{videoUrl}}" controls></video>
-  <div ref:sidebar class="haka-sidebar">
-    {{#each layers as layer}}
-      <div>
-        <p>{{layer.question}}</p>
-        {{#each layer.answers as answer}}
-          <button on:click="onAnswerClick(layer, answer)">{{answer.value}}</button>
-        {{/each}}
-        <p>{{layer.resultText}}</p>
-      </div>
-    {{/each}}
-  </div>
+  <HakaSidebar layers="{{layers}}" />
 </div>
 
 <script>
   function resolveUrl(rootUrl, url) {
     return `${rootUrl}${url}`;
   }
-  function htmlEncode(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
+
+  import HakaSidebar from './haka-sidebar'
+
   export default {
     data() {
       return {
@@ -47,11 +35,6 @@
           this[currentMarker.handler](currentMarker.params);
         }
       },
-      onAnswerClick(layer, answer) {
-        const layers = this.get('layers');
-        layer.resultText = answer.text;
-        this.set({ layers });
-      },
       showQuestionLayer(params) {
         const layers = this.get('layers');
         layers.push({
@@ -61,6 +44,9 @@
         });
         this.set({ layers });
       }
+    },
+    components: {
+      HakaSidebar
     }
   };
 </script>
