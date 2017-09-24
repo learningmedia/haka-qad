@@ -1,24 +1,32 @@
-/* HAKA specific classes: */
 
-.haka-root {
+
+/* Haka */
+
+.Haka {
   display: flex;
   width: 800px;
 }
 
-.haka-video {
+.Haka-video {
   flex: none;
   margin-right: 10px;
 }
 
-.haka-sidebar {
+
+/* HakaSidebar */
+
+.HakaSidebar {
   flex: 1 0 0%;
 }
 
-.haka-question-layer {
+
+/* HakaQuestionLayer */
+
+.HakaQuestionLayer {
   position: relative;
 }
 
-.haka-question-layer-close-button {
+.HakaQuestionLayer-closeButton {
   position: absolute;
   top: 0;
   right: 0;
@@ -28,13 +36,13 @@
   padding: 4px;
 }
 
-.haka-question-layer-content {
+.HakaQuestionLayer-content {
 }
 
-.haka-question-layer-content-expanded {
+.HakaQuestionLayer-content--expanded {
   display: block;
 }
 
-.haka-question-layer-content-collapsed {
+.HakaQuestionLayer-content--collapsed {
   display: none;
 }

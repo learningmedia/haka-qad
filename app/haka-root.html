@@ -1,5 +1,5 @@
-<div class="haka-root">
-  <video ref:video on:timeupdate="onTimeUpdate()" class="haka-video" src="{{videoUrl}}" controls></video>
+<div class="Haka">
+  <video ref:video on:timeupdate="onTimeUpdate()" class="Haka-video" src="{{videoUrl}}" controls></video>
   <HakaSidebar layers="{{layers}}" />
 </div>
 
@@ -40,7 +40,11 @@
         layers.push({
           question: params.question,
           answers: params.answers.map(a => ({ text: a.text, value: a.value })),
-          resultText: ''
+          resultText: '',
+          visibleState: undefined
+        });
+        layers.forEach((layer, index) => {
+          layer.visibleState = (index < layers.length - 1) ? 'collapsed' : 'expanded';
         });
         this.set({ layers });
       }

@@ -1,6 +1,6 @@
-<div class="haka-question-layer">
-  <div class="haka-question-layer-close-button" on:click="onToggleClick()">X</div>
-    <div class="haka-question-layer-content haka-question-layer-content-{{toggleState}}">
+<div class="HakaQuestionLayer">
+  <div class="HakaQuestionLayer-closeButton" on:click="onToggleClick()">X</div>
+    <div class="HakaQuestionLayer-content HakaQuestionLayer-content--{{layer.visibleState}}">
     <p>{{layer.question}}</p>
     {{#each layer.answers as answer}}
       <button on:click="onAnswerClick(answer)">{{{answer.value}}}</button>
@@ -11,11 +11,6 @@
 
 <script>
   export default {
-    data() {
-      return {
-        toggleState: 'expanded'
-      }
-    },
     methods: {
       onAnswerClick(answer) {
         const layer = this.get('layer');
@@ -23,8 +18,9 @@
         this.set({ layer });
       },
       onToggleClick() {
-        const toggleState = this.get('toggleState');
-        this.set({ toggleState: (toggleState === 'expanded') ? 'collapsed' : 'expanded' });
+        const layer = this.get('layer');
+        layer.visibleState = (layer.visibleState === 'expanded') ? 'collapsed' : 'expanded'
+        this.set({ layer });
       }
     }
   };
