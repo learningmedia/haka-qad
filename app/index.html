@@ -2,12 +2,24 @@
 <html>
 <head>
   <title>HAKA Test</title>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="haka.css">
 </head>
 <body>
-  <div id="test"></div>
   <div id="main"></div>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="main.js"></script>
+  <script src="haka.js"></script>
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', function () {
+      new Haka({
+        target: document.getElementById('main'),
+        data: {
+          config: JSON.parse(this.responseText),
+          rootUrl: 'example/'
+        }
+      }).start();
+    });
+    xhr.open('GET', 'example/example.json');
+    xhr.send();
+  </script>
 </body>
 </html>

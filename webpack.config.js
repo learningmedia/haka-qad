@@ -1,17 +1,24 @@
+const webpack = require('webpack');
 const { readFileSync } = require('fs');
 const babelSettings = JSON.parse(readFileSync('.babelrc'));
 
+const buildOptimized = process.env.BUILD_ENV === 'optimized';
+
 module.exports = {
   entry: {
-    main: ['./app/main']
+    haka: ['./app/haka']
   },
   resolve: {
     extensions: ['.js', '.html']
   },
+  plugins: [
+    buildOptimized ? new webpack.optimize.UglifyJsPlugin({ sourceMap: true }) : null
+  ].filter(x => x),
   output: {
+    library: 'Haka',
+    libraryTarget: 'umd',
     path: __dirname + '/public',
-    filename: '[name].js',
-    chunkFilename: '[name].[id].js'
+    filename: '[name].js'
   },
   module: {
     loaders: [{
@@ -25,7 +32,7 @@ module.exports = {
       loader: 'svelte-loader'
     }]
   },
-  devtool: 'inline-source-map',
+  devtool: buildOptimized ? 'source-map' : 'inline-source-map',
   devServer: {
     contentBase: './app'
   }
