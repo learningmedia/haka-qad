@@ -3,9 +3,9 @@
     <div class="haka-question-layer-content haka-question-layer-content-{{toggleState}}">
     <p>{{layer.question}}</p>
     {{#each layer.answers as answer}}
-      <button on:click="onAnswerClick(answer)">{{answer.value}}</button>
+      <button on:click="onAnswerClick(answer)">{{{answer.value}}}</button>
     {{/each}}
-    <p>{{layer.resultText}}</p>
+    <p>{{{layer.resultText}}}</p>
   </div>
 </div>
 

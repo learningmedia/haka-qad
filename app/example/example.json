@@ -7,8 +7,8 @@
     "params": {
       "question": "Welche Farbe hat das Auto?",
       "answers": [{
-        "value": "Grün",
-        "text": "Is falsch"
+        "value": "Grün <b>oder</b> pink",
+        "text": "<span style=\"color: maroon;\">Is falsch</span>"
       }, {
         "value": "Gelb",
         "text": "Is richtig"
