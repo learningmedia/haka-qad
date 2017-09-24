@@ -1,6 +1,6 @@
 <div class="HakaQuestionLayer">
-  <div class="HakaQuestionLayer-closeButton" on:click="onToggleClick()">X</div>
-    <div class="HakaQuestionLayer-content HakaQuestionLayer-content--{{layer.visibleState}}">
+  <div class="HakaQuestionLayer-headerBar HakaQuestionLayer-headerBar--{{layer.visibleState}}" on:click="onToggleClick()"></div>
+  <div class="HakaQuestionLayer-content HakaQuestionLayer-content--{{layer.visibleState}}">
     <p>{{layer.question}}</p>
     {{#each layer.answers as answer}}
       <button on:click="onAnswerClick(answer)">{{{answer.value}}}</button>

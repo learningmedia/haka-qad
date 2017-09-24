@@ -2,7 +2,7 @@
   "video": "Gb-Dur.mp4",
   "markers": [{
     "id": "marker-1",
-    "timecode": "10",
+    "timecode": "2",
     "handler": "showQuestionLayer",
     "params": {
       "question": "Welche Farbe hat das Auto?",
@@ -19,7 +19,7 @@
     }
   }, {
     "id": "marker-2",
-    "timecode": "20",
+    "timecode": "5",
     "handler": "showQuestionLayer",
     "params": {
       "question": "Welche Farbe hat das T-Shirt?",
