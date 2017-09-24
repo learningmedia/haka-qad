@@ -12,7 +12,7 @@
     "prebuild": "npm run clean",
     "build": "cross-env BUILD_ENV=optimized webpack",
     "postbuild": "cleancss -o ./public/haka.css ./app/haka.css",
-    "prepublish": "build"
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
