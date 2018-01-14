@@ -1,6 +1,9 @@
-<div class="Haka">
-  <video ref:video on:timeupdate="onTimeUpdate()" class="Haka-video" src="{{videoUrl}}" controls></video>
-  <HakaQuestionBar layers="{{layers}}" />
+<div class="Haka {{isFullscreen ? 'Haka--fullscreen' : ''}}">
+  <div class="Haka-content">
+    <button on:click="onToggleFullscreenClick()">Toggle fullscreen</button>
+    <video ref:video on:timeupdate="onTimeUpdate()" class="Haka-video" src="{{videoUrl}}" controls></video>
+    <HakaQuestionBar layers="{{layers}}" />
+  </div>
 </div>
 
 <script>
@@ -23,7 +26,7 @@
       start() {
         this.refs.video.play();
         const config = this.get('config');
-        this.set({ markers: config.markers.slice() });
+        this.set({ markers: config.markers.slice(), isFullscreen: false });
       },
       onTimeUpdate() {
         const markers = this.get('markers');
@@ -47,6 +50,9 @@
           layer.visibleState = (index < layers.length - 1) ? 'collapsed' : 'expanded';
         });
         this.set({ layers });
+      },
+      onToggleFullscreenClick() {
+        this.set({ isFullscreen: !this.get('isFullscreen') });
       }
     },
     components: {
