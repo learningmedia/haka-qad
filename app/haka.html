@@ -1,14 +1,14 @@
 <div class="Haka">
   <video ref:video on:timeupdate="onTimeUpdate()" class="Haka-video" src="{{videoUrl}}" controls></video>
-  <HakaSidebar layers="{{layers}}" />
+  <HakaQuestionBar layers="{{layers}}" />
 </div>
 
 <script>
+  import HakaQuestionBar from './haka-question-bar';
+
   function resolveUrl(rootUrl, url) {
     return `${rootUrl}${url}`;
   }
-
-  import HakaSidebar from './haka-sidebar'
 
   export default {
     data() {
@@ -50,7 +50,7 @@
       }
     },
     components: {
-      HakaSidebar
+      HakaQuestionBar
     }
   };
 </script>
