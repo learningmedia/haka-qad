@@ -1,9 +1,11 @@
 :root {
   --haka-width: 100%;
+  --haka--fullscreen-background-color: #B7B7B7FF;
   --haka-video-sidebar-distance: 10px;
   --haka-question-border-width: 2px;
   --haka-question-margin-bottom: 5px;
   --haka-question-header-bar-height: 20px;
+  --haka-question-background-color: #ffffff;
   --haka-question-expanded-color: #ccffcc;
   --haka-question-collapsed-color: #ffccff;
   --haka-question-content-vertical-padding: 5px;
@@ -29,6 +31,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--haka--fullscreen-background-color);
 }
 
 .Haka-content {
@@ -50,6 +57,7 @@
 /* HakaQuestionLayer */
 
 .HakaQuestionLayer {
+  background-color: var(--haka-question-background-color);
   margin-bottom: var(--haka-question-margin-bottom);
 }
 
