@@ -1,6 +1,6 @@
 :root {
-  --haka-width: 800px;
-  --haka-sidebar-margin-left: 10px;
+  --haka-width: 100%;
+  --haka-video-sidebar-distance: 10px;
   --haka-question-border-width: 2px;
   --haka-question-margin-bottom: 5px;
   --haka-question-header-bar-height: 20px;
@@ -19,21 +19,20 @@
 /* Haka */
 
 .Haka {
-  display: flex;
-  align-items: flex-start;
+  display: block;
   width: var(--haka-width);
 }
 
 .Haka-video {
-  flex: none;
+  width: 100%;
+  margin-bottom: var(--haka-video-sidebar-distance);
 }
 
 
 /* HakaSidebar */
 
 .HakaSidebar {
-  margin-left: var(--haka-sidebar-margin-left);
-  flex: 1 0 0%;
+  width: 100%;
 }
 
 
