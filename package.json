@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "clean": "rm -rf ./public/",
+    "clean": "rimraf ./public/",
     "prebuild": "npm run clean",
     "build": "cross-env BUILD_ENV=optimized webpack",
     "postbuild": "cleancss -o ./public/haka.css ./app/haka.css",
@@ -22,6 +22,7 @@
     "clean-css-cli": "^4.1.10",
     "cross-env": "^5.0.5",
     "install": "^0.10.1",
+    "rimraf": "^2.6.2",
     "svelte": "^1.40.1",
     "svelte-loader": "^2.1.0",
     "webpack": "^3.5.6",
